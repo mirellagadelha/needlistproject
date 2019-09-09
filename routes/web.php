@@ -23,6 +23,11 @@ Route::get('/visualizar', function () {
     return view('/lists/visualizar');
 });
 
+Route::get('/compartilhar', function () {
+    return view('/lists/compartilhar');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,8 +39,4 @@ Route::post('/saveImagesAndRedirectLogin', 'ListsController@saveImagesAndRedirec
 
 Route::post('/savelist', 'ListsController@saveListUser')->name('savelist');
 
-Route::post('ajaxRequestPost', 'ListsController@ajaxRequestPost');
-
-
-
-
+Route::post('ajaxRequestItems', 'ListsController@ajaxRequestItems');

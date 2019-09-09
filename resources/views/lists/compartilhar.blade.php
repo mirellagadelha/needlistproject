@@ -11,25 +11,16 @@
         </div>
     </nav>
 
-    @if(count($errors))
-    <div class="form-group">
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    {{$error}}
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    @endif
-
-    <form class="" id="formlist" action="savelist" method="post" enctype="multipart/form-data">
+    <form class="" id="formlist" action="" method="post" enctype="multipart/form-data">
     
         {{csrf_field()}}
         <input name="nome_lista" value="" id="nome_lista_input" type="hidden">
         <input name="desc_lista" value="" id="desc_lista_input" type="hidden">
         <input name="capa_lista" value="" id="capa_lista_input" type="hidden">
-
+        
+        <input name="id_user_list" value="{{$user->id}}" id="id_user_list" type="hidden">
+        <input name="name_user_list" value="{{$user->name}}" id="name_user_list" type="hidden">
+    
         <section id="capa_lista" class="interna center bg-img">
             <div class="bg-b-90">
                 <main class="color-w">
@@ -43,19 +34,27 @@
             <div class="max-w">
                 <div class="col-60">
                     <ul class="lista-item">
-
+                
                     </ul>
+                    
                 </div>
                 <div class="col-40">
-                    <button class="btn-prim center" id="btnFinalizar" type="submit" >Finalizar</button>
+                    
+                    <button class="btn-prim center" id="btnFinalizar" type="submit" >Compartilhar</button>
+
                 </div>
             
             </div>
+        
         </section>
 
     </form>
 
+
     <script src="./js/jquery-3.2.1.min.js"></script>
     <script src="./js/funcoes.js"></script>
+
+
+
 
 @endsection

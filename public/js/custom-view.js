@@ -1,22 +1,19 @@
-//utils
-cont = 1
-
 //variavel lista
-var tbLista = localStorage.getItem("tbLista");
-tbLista = JSON.parse(tbLista); 
-if(tbLista == null) 
-tbLista = [];
+var list = localStorage.getItem("list");
+list = JSON.parse(list); 
+if(list == null) 
+list = [];
 
 //varivavel item
-var tbItens = localStorage.getItem("tbItens");
-tbItens = JSON.parse(tbItens); 
-if(tbItens == null) 
-tbItens = [];
+var tbItems = localStorage.getItem("itemsList");
+tbItems = JSON.parse(tbItems); 
+if(tbItems == null) 
+tbItems = [];
 
 //lista
 $( document ).ready(function() {
 
-    var lista = JSON.parse(tbLista[0]);
+    var lista = JSON.parse(list[0]);
     
     $('#nome_lista').append(lista.nomeLista);
     $('#desc_lista').append(lista.descLista);
@@ -28,28 +25,16 @@ $( document ).ready(function() {
     document.getElementById('desc_lista_input').value = lista.descLista;
     document.getElementById('capa_lista_input').value = lista.capaLista;
 
-
 });
 
-//itens
-$( document ).ready(function() {
-    for (item in tbItens) {
-        item = JSON.parse(tbItens[item]);
-
-    }
-});
-
-//retorna quantidade de itens
 function getQtdItens(){
-    qtdItens = tbItens.length
-    return qtdItens
+    qtdItems = tbItems.length
+    return qtdItems;
 }
 
-function getItens(){
-    qtdItens = tbItens
-    return qtdItens
+function getItems(){
+    return tbItems;
 }
-
 
 $(document).ready( function () {
     $.ajaxSetup({
@@ -60,8 +45,8 @@ $(document).ready( function () {
 
     $.ajax({
         type:'POST',
-        url:'/ajaxRequestPost',
-        data:{itens:getItens(),qtdItens:getQtdItens()},
+        url:'/ajaxRequestItems',
+        data:{itens:getItems(),qtdItens:getQtdItens()},
         success:function(data){
             $(".lista-item").html(data); 
         }

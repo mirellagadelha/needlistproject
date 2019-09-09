@@ -5,26 +5,20 @@
 
 
 <nav class="fixed nav-act">
-
     <div class="max-w">
-
         <ul class="col-100">
 
             <li class="float-left"><a href="index.php" class="logo scroll">needlist</a></li>
             <li class="float-right"><a href="#" class="menu-item scroll">Minhas listas</a></li>
 
         </ul>
-
     </div>
-
 </nav>
 
 <hr>
 
 <section class="interna bg-w">
-
     <div class="max-w">
-    
         <div class="col-60">
         
             <a href="#" class="link-prim">Nova lista em branco</a>
@@ -98,11 +92,7 @@
             
             <div class="col-40">
             
-                <button id="btnSalvar" type="submit" class="link-prim">Salvar</button>
-                <a href="{{ url('/visualizar') }}" class="link-sec">Visualizar</a>
-                
-                <a href="gerenciador.php" class="btn-prim center">Compartilhar</a>
-            
+                <button id="btnSalvar" type="submit" class="link-prim">Salvar</button>           
             </div>
 
         </form>

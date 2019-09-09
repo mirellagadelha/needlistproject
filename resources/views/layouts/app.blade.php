@@ -26,12 +26,10 @@
     <link rel="shortcut icon" href="{{ asset('/img/favicon.png') }}" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Playfair+Display:400i,900i" rel="stylesheet">
     
-    
     <link href={{ asset('/css/grid-ramon.css') }} rel="stylesheet"/>
     <link href={{ asset('/css/estilo.css') }} rel="stylesheet"/>
 
     <script src="{{ asset('/js/jquery.min.js') }}"></script>
-
 
 </head>
 <body>

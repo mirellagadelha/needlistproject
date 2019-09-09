@@ -1,3 +1,9 @@
+//lista
+var list = localStorage.getItem("list");
+list = JSON.parse(list); 
+if(list == null) 
+list = [];
+
 jQuery(document).ready(function() {
     localStorage.removeItem("tbItens");
 
@@ -30,21 +36,6 @@ jQuery(document).ready(function() {
             </li>\
             </ul>');
 
-            var tbItens = localStorage.getItem("tbItens");
-            tbItens = JSON.parse(tbItens); 
-            if(tbItens == null) 
-            tbItens = [];
-
-            var itemList = indice_id-1;
-            var item = JSON.stringify({
-                nomeItem : $("#nome_item"+itemList).val(),
-                qtdItem : $("#qtd_item"+itemList).val(),
-                ondeItem : $("#onde_item"+itemList).val()
-            });
-
-            tbItens.push(item);
-            localStorage.setItem("tbItens", JSON.stringify(tbItens));
-
             indice_id++;
     });
 
@@ -54,16 +45,10 @@ jQuery(document).ready(function() {
         $(this).parents('#item-lista').remove();
     });
 
-
-    $("#btnSalvar").click(function() {
-        localStorage.removeItem("tbLista");
+    $("#btnSalvar").click(function(e) {
+        localStorage.removeItem("list");
+        localStorage.removeItem("itemsList");
         
-        //var indice_selecionado = -1; //Índice do item selecionado na lista
-        var tbLista = localStorage.getItem("tbLista");
-        tbLista = JSON.parse(tbLista); 
-        if(tbLista == null) 
-        tbLista = [];
-
         var nome_imagem = $("#nome_capa_lista").val();
 
         var lista = JSON.stringify({
@@ -72,11 +57,39 @@ jQuery(document).ready(function() {
             capaLista : 'listas/listas_capas/'+nome_imagem+'.jpg'
         });
 
-        tbLista.push(lista);
-        localStorage.setItem("tbLista", JSON.stringify(tbLista));
+        list.push(lista);
+        localStorage.setItem("list", JSON.stringify(list));
 
+        var itemName = [];
+        var itemQtd = [];
+        var itemWhere = [];
+
+        $("input[name='nome_item[]']").each(function(index){
+            itemName.push($(this).val());
+        });
+
+        $("input[name='qtd_item[]']").each(function(){
+             itemQtd.push($(this).val());
+         });
+
+         $("input[name='onde_item[]']").each(function(){
+            itemWhere.push($(this).val());
+        });
+
+        var itemsList = [];
+        itemName.forEach(function (item, index) {
+            var item = {};
+            item = {
+                name: itemName[index],
+                qtd: itemQtd[index],
+                where: itemWhere[index]
+            }
+
+            itemsList.push(JSON.stringify(item));
+        });
+
+        localStorage.setItem("itemsList", JSON.stringify(itemsList));
     });
+
+    
 });
-
-
-
